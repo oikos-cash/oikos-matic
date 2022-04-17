@@ -16,8 +16,8 @@ contract BridgeToMatic {
      * @notice Bridges tokens to Polygon.
      * @param amount The amount to bridge.
      */
-    function bridge(uint amount) external {
-        (bool success, ) = address(chainPortMainBridgeBSC).delegatecall(abi.encodeWithSignature("depositTokens(address, uint256, uint256)", oks, amount, 3));
+    function bridge(uint amount) external returns (bool success) {
+        ( , ) = address(chainPortMainBridgeBSC).delegatecall(abi.encodeWithSignature("depositTokens(address, uint256, uint256)", oks, amount, 3));
     }
 
 }
@@ -29,6 +29,6 @@ contract UnBridgeToBSC is BridgeToPolygon {
      * @param amount The amount to unbridge.
      */
     function unbridge(uint amount) external returns (bool success) {
-        (, ) = address(chainPortMainBridgeMatic).delegatecall(abi.encodeWithSignature("burnTokens(address, uint256)", oks, amount));
+        ( , ) = address(chainPortMainBridgeMatic).delegatecall(abi.encodeWithSignature("burnTokens(address, uint256)", oks, amount));
     }
 }
