@@ -1,7 +1,6 @@
 require('dotenv').config()
 require("@nomiclabs/hardhat-waffle");
 require('@nomiclabs/hardhat-ethers')
-require('@eth-optimism/plugins/hardhat/compiler')
 require('hardhat-abi-exporter');
 
 // This is a sample Hardhat task. To learn how to create your own go to
